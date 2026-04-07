@@ -1,3 +1,4 @@
+# users 테이블 ORM 모델
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
@@ -10,8 +11,9 @@ class User(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True, nullable=False)
-    password = Column(String, nullable=False)
+    password = Column(String, nullable=False)  # bcrypt 해시만 저장
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
+    # 유저 삭제 시 연관 데이터도 함께 삭제 (cascade)
     cover_letters = relationship("CoverLetter", back_populates="user", cascade="all, delete")
     resume = relationship("Resume", back_populates="user", uselist=False, cascade="all, delete")

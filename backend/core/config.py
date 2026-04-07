@@ -1,3 +1,5 @@
+# 앱 전역 설정
+# .env 파일에서 환경 변수를 읽어 Settings 인스턴스로 주입
 from pydantic_settings import BaseSettings
 
 
@@ -5,12 +7,15 @@ class Settings(BaseSettings):
     app_name: str = "AI 커버레터 생성기"
     debug: bool = False
 
+    # SQLite 기본값 — 프로덕션에서는 PostgreSQL URL로 교체
     database_url: str = "sqlite:///./coverletter.db"
 
+    # JWT 설정
     jwt_secret: str = ""
     jwt_algorithm: str = "HS256"
     jwt_expire_minutes: int = 60 * 24 * 7  # 7일
 
+    # Anthropic Claude API
     anthropic_api_key: str = ""
     claude_model: str = "claude-sonnet-4-20250514"
 
@@ -18,4 +23,5 @@ class Settings(BaseSettings):
         env_file = ".env"
 
 
+# 전역 싱글톤 — 다른 모듈에서 from core.config import settings 로 사용
 settings = Settings()

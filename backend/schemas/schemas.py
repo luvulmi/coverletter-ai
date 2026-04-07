@@ -1,3 +1,5 @@
+# Pydantic 요청/응답 스키마
+# 라우터에서 request body 파싱 및 response_model 직렬화에 사용
 from datetime import datetime
 from typing import Optional
 

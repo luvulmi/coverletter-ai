@@ -1,3 +1,7 @@
+# FastAPI 앱 진입점
+# uvicorn main:app --reload 로 실행
+
+
 def main():
     print("Hello from backend!")
 
