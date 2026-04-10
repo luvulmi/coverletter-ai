@@ -7,7 +7,7 @@
 ## 소개
 
 JD와 이력서를 입력하면 Claude 또는 OpenAI가 맞춤형 커버레터 초안을 실시간 스트리밍으로 생성.
-생성된 커버레터는 저장하고 관리 가능.
+ 생성된 커버레터는 저장하고 관리 가능.
 
 ---
 
@@ -209,8 +209,8 @@ JWT_SECRET=your-secret-key
 LLM_PROVIDER=claude              # "claude" 또는 "openai"
 LLM_MODEL=claude-sonnet-4-20250514
 
-ANTHROPIC_API_KEY=sk-ant-...     # Claude 사용 시
-OPENAI_API_KEY=sk-...            # OpenAI 사용 시
+ANTHROPIC_API_KEY=...     # Claude 사용 시
+OPENAI_API_KEY=...            # OpenAI 사용 시
 ```
 
 ### frontend/.env
