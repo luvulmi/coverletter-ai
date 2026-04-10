@@ -15,9 +15,15 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     jwt_expire_minutes: int = 60 * 24 * 7  # 7일
 
-    # Anthropic Claude API
+    # 사용할 LLM 프로바이더 선택 — "claude" 또는 "openai"
+    llm_provider: str = "claude"
+
+    # 각 프로바이더별 API 키 — 사용하는 것만 .env에 입력하면 됨
     anthropic_api_key: str = ""
-    claude_model: str = "claude-sonnet-4-20250514"
+    openai_api_key: str = ""
+
+    # 모델명 — 프로바이더 바꿀 때 여기도 같이 변경
+    llm_model: str = "claude-sonnet-4-20250514"
 
     class Config:
         env_file = ".env"
