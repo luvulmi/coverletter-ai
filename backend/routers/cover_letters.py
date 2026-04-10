@@ -52,8 +52,8 @@ def generate(
                 jd_text=body.jd_text,
                 resume_text=resume_text,
             ):
-                # 줄바꿈 문자는 SSE 구분자와 충돌하므로 공백으로 치환
-                safe_chunk = chunk.replace("\n", " ")
+                # 줄바꿈을 특수 구분자로 치환
+                safe_chunk = chunk.replace("\n", "\\n")
                 yield f"data: {safe_chunk}\n\n"
         except Exception as e:
             # 에러 발생 시 클라이언트에 알림
