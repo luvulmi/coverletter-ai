@@ -234,21 +234,3 @@ Claude/OpenAI 응답을 `StreamingResponse`로 실시간 전송. 프론트는 `f
 
 ### IDOR 방지
 단건 조회 시 `id`와 `user_id`를 동시에 필터링해서 타인 데이터 접근 차단.
-
----
-
-## 진행 현황
-
-- [x] 백엔드 API 전체 구현
-- [x] JWT 인증
-- [x] Claude / OpenAI 멀티 LLM 지원
-- [x] SSE 스트리밍 테스트 완료
-- [x] Docker 세팅
-- [x] Vue 3 + TypeScript 프로젝트 세팅
-- [x] Axios 인스턴스 + 인터셉터
-- [x] Pinia 인증 스토어
-- [x] 로그인 / 회원가입 페이지
-- [ ] 이력서 저장 페이지
-- [ ] 커버레터 생성 페이지 (SSE)
-- [ ] 히스토리 페이지
-- [ ] Railway + Vercel 배포

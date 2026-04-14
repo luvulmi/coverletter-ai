@@ -3,18 +3,19 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 from core.config import settings
 
+# SQLite면 check_same_thread 추가, PostgreSQL이면 불필요
+connect_args = {"check_same_thread": False} if "sqlite" in settings.database_url else {}
+
 engine = create_engine(
     settings.database_url,
-    connect_args={"check_same_thread": False},  # SQLite 전용 설정
+    connect_args=connect_args,
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 Base = declarative_base()
 
 
 def get_db():
-    """FastAPI 의존성 주입용 DB 세션"""
     db = SessionLocal()
     try:
         yield db
@@ -23,5 +24,4 @@ def get_db():
 
 
 def init_db():
-    """앱 시작 시 테이블 자동 생성"""
     Base.metadata.create_all(bind=engine)
