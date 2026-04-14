@@ -33,10 +33,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     # 허용할 출처 목록 — 로컬 Vue 개발 서버 + 추후 배포 도메인 추가
-    allow_origins=[
-        "http://localhost:5173",   # Vite 기본 포트
-        "http://localhost:3000",   # 혹시 다른 포트 쓸 경우 대비
-    ],
+    allow_origins=settings.allowed_origins.split(","),
     allow_credentials=True,  # 쿠키/인증 헤더 허용
     allow_methods=["*"],     # GET, POST, PUT, DELETE 등 전부 허용
     allow_headers=["*"],     # Authorization 헤더 포함 전부 허용
