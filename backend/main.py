@@ -7,6 +7,8 @@ from core.config import settings
 from database import init_db
 from routers import auth, cover_letters, resume
 
+import logging
+logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -53,3 +55,8 @@ def health():
     Railway 배포 시 헬스체크로 사용됨
     """
     return {"status": "ok", "provider": settings.llm_provider}
+
+
+# 앱 생성 직후
+logger.info(f"CORS origins: {settings.allowed_origins.split(',')}")
+logger.info(f"LLM Provider: {settings.llm_provider}")
